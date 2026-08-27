@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "311398295108",
+    "project_id": "smart-shopper-35966",
+    "storage_bucket": "smart-shopper-35966.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:311398295108:android:6a0b4d4ed78a2b4cf9fe11",
+        "android_client_info": {
+          "package_name": "com.example.smartshopper"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdtw7XdMMXZH4_rBD-_c39v8lUyctCJsU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,3 @@
+- [x] Refactor `SendMessageUseCase` to return `Result<String>` and handle chat creation
+- [x] Update `ChatViewModel.sendMessage()` to handle the new return type and delegated creation logic
+- [x] Verify build and functionality

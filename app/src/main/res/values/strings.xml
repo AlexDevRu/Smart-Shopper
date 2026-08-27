@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Smart Shopper</string>
+    <string name="chat_title">Chat</string>
+    <string name="chat_input_hint">Type a message…</string>
+    <string name="chat_send_button">Send</string>
+    <string name="chat_content_title">Chat Content</string>
+    <string name="chat_menu_description">Menu</string>
+    <string name="chat_new_chat">New Chat</string>
+    <string name="chat_preview_text">Chat Screen with Drawer Preview</string>
+    <string name="chat_welcome_message">Hi, How can I help?</string>
+    <string name="chat_delete">Delete</string>
+    <string name="chat_rename">Rename</string>
+    <string name="chat_rename_dialog_title">Rename Chat</string>
+    <string name="chat_rename_save">Save</string>
+    <string name="chat_rename_cancel">Cancel</string>
+    <string name="chat_more_options">More options</string>
+    <string name="search_products">Search products</string>
+    <string name="search_title">Search Products</string>
+    <string name="search_placeholder">Search products&#8230;</string>
+    <string name="search_no_results">No products found</string>
+    <string name="common_back">Back</string>
+    <string name="search_hint">Search products&#8230;</string>
+    <string name="max_price_hint">Max $</string>
+    <string name="clear_search">Clear search</string>
+</resources>
