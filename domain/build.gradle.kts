@@ -13,6 +13,8 @@ kotlin {
 }
 
 dependencies {
+    implementation(platform(libs.kotlinx.coroutines.bom))
+    implementation(libs.kotlinx.coroutines.core)
     implementation(libs.javax.inject)
     implementation(libs.paging.common)
 

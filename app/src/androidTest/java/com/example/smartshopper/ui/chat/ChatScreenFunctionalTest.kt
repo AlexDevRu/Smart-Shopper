@@ -6,6 +6,8 @@ import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.junit4.v2.createAndroidComposeRule
+import androidx.compose.ui.test.onAllNodesWithText
+import androidx.compose.ui.test.onFirst
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
@@ -67,7 +69,9 @@ class ChatScreenFunctionalTest {
         composeTestRule.onNodeWithContentDescription(menuDescription).performClick()
 
         // Verify drawer content (New Chat button should be visible)
-        composeTestRule.onNodeWithText(newChatText).assertIsDisplayed()
+        composeTestRule.onAllNodesWithText(newChatText)
+            .onFirst()
+            .assertIsDisplayed()
     }
 
     @Test
@@ -84,11 +88,15 @@ class ChatScreenFunctionalTest {
 
         // 2. Wait for chat to be created (More options should appear)
         composeTestRule.waitUntil(timeoutMillis = 5000) {
-            composeTestRule.onAllNodesWithContentDescription(moreOptionsDescription).fetchSemanticsNodes().isNotEmpty()
+            composeTestRule.onAllNodesWithContentDescription(moreOptionsDescription)
+                .fetchSemanticsNodes()
+                .isNotEmpty()
         }
 
         // 3. Open overflow menu
-        composeTestRule.onNodeWithContentDescription(moreOptionsDescription).performClick()
+        composeTestRule.onAllNodesWithContentDescription(moreOptionsDescription)
+            .onFirst()
+            .performClick()
 
         // 4. Click Rename
         composeTestRule.onNodeWithText(renameText).performClick()

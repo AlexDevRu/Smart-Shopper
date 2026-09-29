@@ -41,6 +41,6 @@ class DatabaseIntegrationTest {
         // Verify chat exists
         val chat = repository.getChatById(chatId).getOrThrow()
         assertEquals(chatId, chat?.id)
-        assertEquals("Hello World", chat?.lastMessage)
+        assertEquals("AI response for: Hello World", chat?.lastMessage)
     }
 }

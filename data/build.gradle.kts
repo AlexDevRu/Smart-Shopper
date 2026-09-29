@@ -31,6 +31,8 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(platform(libs.kotlinx.coroutines.bom))
+    implementation(libs.kotlinx.coroutines.core)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
 
