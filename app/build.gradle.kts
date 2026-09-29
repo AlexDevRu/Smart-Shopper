@@ -1,3 +1,5 @@
+import com.google.firebase.appdistribution.gradle.firebaseAppDistribution
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
@@ -5,6 +7,7 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.google.services)
     alias(libs.plugins.crashlytics)
+    alias(libs.plugins.firebase.appdistribution)
     alias(libs.plugins.screenshot)
 }
 
@@ -31,8 +34,15 @@ android {
             optimization {
                 enable = false
             }
+            firebaseAppDistribution {
+                artifactType = "APK"
+                serviceCredentialsFile = "smart-shopper-35966-firebase-adminsdk-fbsvc-b50e33da45.json"
+                testers = "alexkulakov01@gmail.com"
+                releaseNotes = "test release notes"
+            }
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -93,4 +103,8 @@ dependencies {
 
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
+}
+
+tasks.matching { it.name.startsWith("appDistributionUpload") }.configureEach {
+    dependsOn(tasks.matching { it.name.startsWith("assemble") })
 }
