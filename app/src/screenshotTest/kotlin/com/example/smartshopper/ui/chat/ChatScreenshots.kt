@@ -2,6 +2,7 @@ package com.example.smartshopper.ui.chat
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -9,14 +10,28 @@ import com.android.tools.screenshot.PreviewTest
 import com.example.smartshopper.ui.chat.components.ChatInputBar
 import com.example.smartshopper.ui.chat.components.ChatMessageItem
 import com.example.smartshopper.ui.chat.components.ProductCard
+import com.example.smartshopper.ui.common.DateFormatter
+import com.example.smartshopper.ui.common.LocalDateFormatter
 import com.example.smartshopper.ui.theme.SmartShopperTheme
 import java.time.Instant
+import java.time.ZoneId
+
+private val FixedDateFormatter = DateFormatter(zoneId = ZoneId.of("UTC"))
+
+@Composable
+private fun ScreenshotTestTheme(content: @Composable () -> Unit) {
+    SmartShopperTheme {
+        CompositionLocalProvider(LocalDateFormatter provides FixedDateFormatter) {
+            content()
+        }
+    }
+}
 
 @PreviewTest
 @Preview(showBackground = true)
 @Composable
 private fun ProductCardScreenshot() {
-    SmartShopperTheme {
+    ScreenshotTestTheme {
         ProductCard(
             product = ProductItemUiState(
                 id = "1",
@@ -36,7 +51,7 @@ private fun ProductCardScreenshot() {
 @Preview(showBackground = true)
 @Composable
 private fun UserMessageScreenshot() {
-    SmartShopperTheme {
+    ScreenshotTestTheme {
         ChatMessageItem(
             message = MessageUiState(
                 id = "1",
@@ -53,7 +68,7 @@ private fun UserMessageScreenshot() {
 @Preview(showBackground = true)
 @Composable
 private fun AiMessageWithProductsScreenshot() {
-    SmartShopperTheme {
+    ScreenshotTestTheme {
         ChatMessageItem(
             message = MessageUiState(
                 id = "3",
@@ -75,7 +90,7 @@ private fun AiMessageWithProductsScreenshot() {
 @Preview(showBackground = true)
 @Composable
 private fun ChatInputBarEmptyScreenshot() {
-    SmartShopperTheme {
+    ScreenshotTestTheme {
         ChatInputBar(
             text = "",
             isSendEnabled = false,
@@ -89,7 +104,7 @@ private fun ChatInputBarEmptyScreenshot() {
 @Preview(showBackground = true)
 @Composable
 private fun ChatInputBarTypedScreenshot() {
-    SmartShopperTheme {
+    ScreenshotTestTheme {
         ChatInputBar(
             text = "Searching for a bike",
             isSendEnabled = true,
